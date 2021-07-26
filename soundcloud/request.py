@@ -117,6 +117,9 @@ def make_request(method, url, params):
         del params['proxies']
     if 'allow_redirects' in params:
         del params['allow_redirects']
+    if 'oauth_token' in params:
+        kwargs['headers']['Authorization'] = "OAuth " + params['oauth_token']
+        del params['oauth_token']
 
     params = hashconversions.to_params(params)
     files = namespaced_query_string(extract_files_from_dict(params))

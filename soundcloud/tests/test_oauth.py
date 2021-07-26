@@ -42,7 +42,7 @@ def test_authorize_url_construction():
     """Test that authorize url is being generated properly."""
     client = soundcloud.Client(client_id='foo', client_secret='bar',
                                redirect_uri='http://example.com/callback')
-    eq_('https://api.soundcloud.com/connect?%s' % (urlencode({
+    eq_('https://api-v2.soundcloud.com/connect?%s' % (urlencode({
         'scope': 'non-expiring',
         'client_id': 'foo',
         'response_type': 'code',
@@ -69,7 +69,7 @@ def test_exchange_code_expiring(fake):
         client = soundcloud.Client(client_id='foo', client_secret='bar',
                                    redirect_uri='http://example.com/callback',
                                    scope='*')
-        eq_('https://api.soundcloud.com/connect?%s' % (urlencode({
+        eq_('https://api-v2.soundcloud.com/connect?%s' % (urlencode({
             'scope': '*',
             'client_id': 'foo',
             'response_type': 'code',

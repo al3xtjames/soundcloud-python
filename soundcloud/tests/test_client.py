@@ -34,9 +34,9 @@ def test_url_creation():
     """Test that resources are turned into urls properly."""
     client = soundcloud.Client(client_id='foo')
     url = client._resolve_resource_name('tracks')
-    eq_('https://api.soundcloud.com/tracks', url)
+    eq_('https://api-v2.soundcloud.com/tracks', url)
     url = client._resolve_resource_name('/tracks/')
-    eq_('https://api.soundcloud.com/tracks', url)
+    eq_('https://api-v2.soundcloud.com/tracks', url)
 
 
 def test_url_creation_options():
@@ -61,7 +61,7 @@ def test_host_config():
     client = soundcloud.Client(client_id='foo', host='api.soundcloud.dev')
     eq_('api.soundcloud.dev', client.host)
     client = soundcloud.Client(client_id='foo')
-    eq_('api.soundcloud.com', client.host)
+    eq_('api-v2.soundcloud.com', client.host)
 
 
 @patch('requests.get')
